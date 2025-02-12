@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative './position'
-require 'debug'
 
 module ReversiMethods
   WHITE_STONE = 'W'
@@ -53,9 +52,7 @@ module ReversiMethods
     turn_succeed = false
     Position::DIRECTIONS.each do |direction|
       next_pos = pos.next_position(direction)
-      # binding.break
       turn_succeed = true if turn(copied_board, next_pos, stone_color, direction)
-      # binding.break
     end
 
     copy_board(board, copied_board) if !dry_run && turn_succeed
